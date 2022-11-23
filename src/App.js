@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from 'styled-components';
+import BoardPage from './routes/BoardPage';
 
-function App() {
+import './App.css';
+import { colors, cardColors } from './constants/colors';
+
+const theme = {
+  colors,
+  cardColors,
+};
+
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <BoardPage />
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
