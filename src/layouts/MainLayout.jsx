@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import AsideMenu from '../components/AsideMenu';
+import Sidebar from '../components/Sidebar';
+import { ToolsBar } from '../components/ToolsBar';
 
 const Layout = styled.section``;
 
 export const MainLayout = ({ children }) => {
   return (
     <Layout>
-      <AsideMenu />
+      <Sidebar />
+      <ToolsBar />
       {children}
     </Layout>
   );

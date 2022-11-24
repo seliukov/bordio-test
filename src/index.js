@@ -7,8 +7,4 @@ import MainLayout from './layouts/MainLayout';
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-root.render(
-  <MainLayout>
-    <App />
-  </MainLayout>
-);
+root.render(<App />);
