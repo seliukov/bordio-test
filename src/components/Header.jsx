@@ -9,6 +9,7 @@ import AppIcon from './UI/AppIcon';
 import PlusIcon from '../assets/images/ico_plus.svg';
 import Avatar from '../assets/images/avatar.png';
 import { ReactComponent as Bell } from '../assets/images/ico_bell.svg';
+import { filterOptions, selectOptions } from '../constants/selection';
 
 const HeaderWrapper = styled.header`
   position: absolute;
@@ -37,13 +38,13 @@ export const Header = () => {
     <HeaderWrapper>
       <GroupWrapper>
         <AppButton title={'Add new'} icon={PlusIcon} onClick={handleClick} />
-        <AppSelect />
-        <AppSelect />
+        <AppSelect options={selectOptions} defaultValue={selectOptions[2].label} id={'views'} />
+        <AppSelect options={filterOptions} id={'filters'} />
       </GroupWrapper>
       <GroupWrapper>
         <AppSearch variant={'light'} />
         <AppIcon>
-          <Bell fill={colors.ICON_COLOR} />
+          <Bell />
         </AppIcon>
         <AppImage image={Avatar} alt='avatar' width={40} height={40} />
       </GroupWrapper>

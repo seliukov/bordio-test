@@ -4,6 +4,7 @@ const IconWrapper = styled.div`
   width: ${(props) => `${props.size}px`};
   height: ${(props) => `${props.size}px`};
   transition: all 300ms;
+  cursor: pointer;
 
   &.activeCategory {
     transform: scale(1, -1);

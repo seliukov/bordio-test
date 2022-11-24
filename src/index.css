@@ -7,6 +7,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+input,
+textarea,
+select {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
 button {
   border: none;
   outline: none;
