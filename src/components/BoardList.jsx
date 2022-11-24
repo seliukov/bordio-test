@@ -36,10 +36,7 @@ export const BoardList = () => {
     favorites: false,
   });
 
-  console.log('favorites, myProjects,', favorites, myProjects);
-
   const handleActiveBoard = (board) => {
-    console.log('board', board);
     setActiveBoard(board);
   };
 

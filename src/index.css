@@ -7,6 +7,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+button {
+  border: none;
+  outline: none;
+}
+
 ul {
   margin: 0;
   padding: 0;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import { ToolsBar } from '../components/ToolsBar';
 
@@ -10,6 +11,7 @@ export const MainLayout = ({ children }) => {
     <Layout>
       <Sidebar />
       <ToolsBar />
+      <Header />
       {children}
     </Layout>
   );
