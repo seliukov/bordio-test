@@ -51,10 +51,7 @@ const ItemWrapper = styled.li`
 `;
 
 export const ToolItem = ({ tool, activeTool, handleActiveTool }) => {
-  console.log('activeTool', activeTool);
-
   const getItemIcon = ({ active }) => {
-    console.log('active', active);
     switch (tool.label) {
       case 'Roadmap':
         return <Roadmap fill={active ? colors.ACTIVE_COLOR : colors.ICON_COLOR} />;
@@ -70,8 +67,6 @@ export const ToolItem = ({ tool, activeTool, handleActiveTool }) => {
         break;
     }
   };
-
-  console.log('activeTool?.id === tool.id', activeTool?.id === tool.id);
 
   return (
     <ItemWrapper onClick={() => handleActiveTool(tool)} active={activeTool?.id === tool.id}>

@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
 const ImageWrapper = styled.div`
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  width: ${(props) => `${props.width}px`};
+  height: ${(props) => `${props.height}px`};
+  max-width: 100%;
+  max-height: 100%;
+  cursor: pointer;
 
   img {
-    width: 100%;
     height: 100%;
   }
 `;

@@ -6,7 +6,8 @@ const Search = styled.input`
     switch (props.variant) {
       case 'dark':
         return css`
-          width: 187px;
+          width: 100%;
+          max-width: 187px;
           height: 32px;
           padding: 9px 10px;
           box-sizing: border-box;
@@ -16,17 +17,19 @@ const Search = styled.input`
         `;
       case 'light':
         return css`
-          width: 180px;
+          width: 100%;
+          max-width: 180px;
           height: 40px;
           padding: 12px 16px;
           box-sizing: border-box;
           border-radius: 50px;
-          color: ${colors.BASE_WHITE};
+          color: ${colors.PRIMARY_TEXT_COLOR};
           background: ${colors.INPUT_SEARCH_LIGHT_COLOR};
         `;
       default:
         return css`
-          width: 180px;
+          width: 100%;
+          max-width: 180px;
           height: 40px;
           padding: 12px 16px;
           box-sizing: border-box;

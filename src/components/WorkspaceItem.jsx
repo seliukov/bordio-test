@@ -33,7 +33,7 @@ const ItemWrapper = styled.li`
 export const WorkspaceItem = ({ workspace, handleActiveBoard, activeBoard }) => {
   return (
     <ItemWrapper onClick={() => handleActiveBoard(workspace)} active={activeBoard.id === workspace.id}>
-      <AppImage image={workspace.avatar} alt='avatar' width={'22px'} height={'22px'} />
+      <AppImage image={workspace.avatar} alt='avatar' width={22} height={22} />
       <span>{workspace.label}</span>
     </ItemWrapper>
   );

@@ -24,7 +24,7 @@ const SearchWrapper = styled.div`
 export const Sidebar = () => {
   return (
     <Aside>
-      <AppImage image={Bordio} alt='logo' width={'131px'} height={'32px'} />
+      <AppImage image={Bordio} alt='logo' width={131} height={32} />
       <SearchWrapper>
         <AppSearch variant={'dark'} />
       </SearchWrapper>
