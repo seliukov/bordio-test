@@ -18,6 +18,7 @@ export const colors = {
   TABLE_BORDER_COLOR: '#f3f3f3',
   CARD_SUBTITLE_COLOR: '#435E52',
   CARD_COUNTER_COLOR: '#E8EBEF',
+  BADGE_BG_COLOR: '#F21247',
 };
 
 export const cardColors = ['#ABE9CE', '#D8DCFF', '#D9E6A2', '#F2BAE1', '#FFDFBA', '#FEC6B7'];

@@ -10,6 +10,7 @@ import PlusIcon from '../assets/images/ico_plus.svg';
 import Avatar from '../assets/images/avatar.png';
 import { ReactComponent as Bell } from '../assets/images/ico_bell.svg';
 import { filterOptions, selectOptions } from '../constants/selection';
+import AppBadge from './UI/AppBadge';
 
 const HeaderWrapper = styled.header`
   position: absolute;
@@ -43,9 +44,11 @@ export const Header = () => {
       </GroupWrapper>
       <GroupWrapper>
         <AppSearch variant={'light'} />
-        <AppIcon>
-          <Bell />
-        </AppIcon>
+        <AppBadge color={colors.BADGE_BG_COLOR} content={'99+'}>
+          <AppIcon>
+            <Bell />
+          </AppIcon>
+        </AppBadge>
         <AppImage image={Avatar} alt='avatar' width={40} height={40} />
       </GroupWrapper>
     </HeaderWrapper>
