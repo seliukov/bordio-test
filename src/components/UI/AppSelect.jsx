@@ -1,4 +1,6 @@
 import styled, { css } from 'styled-components';
+import cn from 'classnames';
+
 import AppIcon from './AppIcon';
 import { colors } from '../../constants/colors';
 import { ReactComponent as Arrow } from '../../assets/images/arrows.svg';
@@ -14,6 +16,10 @@ const SelectWrapper = styled.div`
     position: absolute;
     right: 14px;
     cursor: pointer;
+
+    &.active {
+      transform: scale(1, -1);
+    }
   }
 `;
 
@@ -103,7 +109,7 @@ export const AppSelect = ({ options, id, defaultValue = '' }) => {
           ))}
         </Select>
       )}
-      <AppIcon className={'iconWrapper'} size={24}>
+      <AppIcon className={cn('iconWrapper', { active: !!isOpenSelect[id] })} size={24}>
         <Arrow fill={colors.ICON_COLOR} />
       </AppIcon>
     </SelectWrapper>

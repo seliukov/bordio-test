@@ -1,8 +1,9 @@
 import { ThemeProvider } from 'styled-components';
-import BoardPage from './routes/BoardPage';
 
-import './App.css';
+import BoardPage from './routes/BoardPage';
 import { colors, cardColors } from './constants/colors';
+import MainLayout from './layouts/MainLayout';
+import './App.css';
 
 const theme = {
   colors,
@@ -12,7 +13,9 @@ const theme = {
 export const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <BoardPage />
+      <MainLayout>
+        <BoardPage />
+      </MainLayout>
     </ThemeProvider>
   );
 };

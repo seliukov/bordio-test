@@ -15,6 +15,10 @@ const Button = styled.button`
   line-height: 16px;
   background: ${colors.BUTTON_COLOR};
   cursor: pointer;
+
+  :hover {
+    opacity: 0.7;
+  }
 `;
 
 const ImageWrapper = styled.div`
