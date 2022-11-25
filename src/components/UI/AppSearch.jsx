@@ -1,5 +1,26 @@
 import styled, { css } from 'styled-components';
 import { colors } from '../../constants/colors';
+import SearchIcon from '../../assets/images/ico_search.svg';
+
+const SearchWrapper = styled.div`
+  position: relative;
+`;
+
+const IconWrapper = styled.div`
+  > img {
+    position: absolute;
+
+    &.dark {
+      top: 9px;
+      right: 28px;
+    }
+
+    &.light {
+      top: 12px;
+      right: 16px;
+    }
+  }
+`;
 
 const Search = styled.input`
   ${(props) => {
@@ -43,9 +64,12 @@ const Search = styled.input`
 
 export const AppSearch = ({ variant }) => {
   return (
-    <>
+    <SearchWrapper>
       <Search placeholder='Search...' variant={variant} />
-    </>
+      <IconWrapper>
+        <img src={SearchIcon} alt='search icon' className={variant} />
+      </IconWrapper>
+    </SearchWrapper>
   );
 };
 

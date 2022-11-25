@@ -3,6 +3,9 @@ import styled from 'styled-components';
 const IconWrapper = styled.div`
   width: ${(props) => `${props.size}px`};
   height: ${(props) => `${props.size}px`};
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 300ms;
   cursor: pointer;
 
