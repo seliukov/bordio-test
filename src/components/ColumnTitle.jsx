@@ -25,10 +25,10 @@ const CountWrapper = styled.span`
   border-radius: 100px;
 `;
 
-export const ColumnTitle = ({ status, count }) => {
+export const ColumnTitle = ({ title, count }) => {
   return (
     <TitleWrapper>
-      {status}
+      {title}
       {!!count && <CountWrapper>{count}</CountWrapper>}
     </TitleWrapper>
   );
