@@ -1,67 +1,72 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { cards, statuses } from '../constants/cards';
-import { colors } from '../constants/colors';
+import { COLUMNS, defaultTasks } from '../constants/cards';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { TouchBackend } from 'react-dnd-touch-backend';
+
+import BoardColumn from './BoardColumn';
+import { useState } from 'react';
 import Card from './Card';
-import ColumnTitle from './ColumnTitle';
+import useMobile from '../hooks/useMobile';
+import { getArrayRandElement } from '../helpers/getArrayRandElement';
+import { cardColors } from '../constants/colors';
 
 const BoardWrapper = styled.div`
-  width: 100%;
   display: flex;
-`;
-
-const ColumnWrapper = styled.div`
-  width: 290px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-
-  :first-child {
-    width: 300px;
-  }
-`;
-
-const CardsWrapper = styled.div`
-  display: grid;
-  padding: 39px 10px 0px;
-  gap: 10px;
-  border-right: 1px solid ${colors.TABLE_BORDER_COLOR};
-
-  :first-child {
-    padding: 39px 10px 0px 10px;
-  }
+  flex-direction: row;
 `;
 
 export const Board = () => {
-  const [sortedCards, setSortedCards] = useState(null);
-  const isNotEmptyBoard = sortedCards && !!Object.keys(sortedCards).length;
+  const isMobile = useMobile();
+  const [tasks, setTasks] = useState(defaultTasks.map((task) => ({ ...task, color: getArrayRandElement(cardColors) })));
 
-  useEffect(() => {
-    getCards();
-  }, []);
+  const moveCardHandler = (dragIndex, hoverIndex, dragColumn) => {
+    const targetArray = [...tasks].filter((task) => task.status === dragColumn);
 
-  const getCards = () => {
-    let tempCards = {};
+    const dragItem = targetArray[dragIndex];
 
-    statuses.forEach(({ value }) => {
-      tempCards[value] = cards.filter((card) => card.status === value);
-    });
+    if (dragItem) {
+      setTasks((prevState) => {
+        const coppiedStateArray = [...prevState];
+        const tempArr = [];
 
-    setSortedCards(tempCards);
+        Object.values(COLUMNS).forEach((val) => {
+          if (val === COLUMNS.createStatus) return;
+          if (val === dragColumn) {
+            const copiedTarget = [...targetArray];
+            const prevItem = copiedTarget.splice(hoverIndex, 1, dragItem);
+            copiedTarget.splice(dragIndex, 1, prevItem[0]);
+            tempArr.push(copiedTarget);
+
+            return targetArray;
+          }
+
+          tempArr.push(coppiedStateArray.filter((task) => task?.status === val));
+        });
+
+        return tempArr.flat();
+      });
+    }
+  };
+
+  const getTasksByColumn = (columnName) => {
+    return tasks
+      .filter((task) => task?.status === columnName)
+      .map((task, index) => (
+        <Card key={task.id} index={index} task={task} setTasks={setTasks} moveCardHandler={moveCardHandler} />
+      ));
   };
 
   return (
     <BoardWrapper>
-      {statuses?.map(({ label, value }) => (
-        <ColumnWrapper key={value}>
-          <ColumnTitle status={label} count={isNotEmptyBoard && sortedCards[value].length} />
-          <CardsWrapper>
-            {isNotEmptyBoard ? sortedCards[value].map((card) => <Card key={card.id} card={card} />) : '...loading'}
-          </CardsWrapper>
-        </ColumnWrapper>
-      ))}
+      <DndProvider backend={isMobile ? TouchBackend : HTML5Backend}>
+        {Object.keys(COLUMNS).map((key) => (
+          <BoardColumn key={key} title={COLUMNS[key]} count={3}>
+            {getTasksByColumn(COLUMNS[key])}
+          </BoardColumn>
+        ))}
+      </DndProvider>
     </BoardWrapper>
   );
 };
